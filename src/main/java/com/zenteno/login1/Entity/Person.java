@@ -28,8 +28,8 @@ public class Person implements Serializable {
     @Column(name = "state", length = 1, nullable = false )
     private String state;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_job", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_job", nullable = false)  
     private Job job;
 
     public Person() { }

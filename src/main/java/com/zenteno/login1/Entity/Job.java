@@ -1,8 +1,8 @@
 package com.zenteno.login1.Entity;
 
 import java.io.Serializable;
+import java.util.List;
 import jakarta.persistence.*;
-//import java.util.List;
 
 
 @Entity
@@ -16,6 +16,9 @@ public class Job implements Serializable {
 
     @Column(name = "description", length = 50, nullable = false)
     private String description;
+
+    @OneToMany( mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
+    private  List<Person> persons;
 
     public Job() { }
 
@@ -32,6 +35,10 @@ public class Job implements Serializable {
         return description;
     }
 
+    // public List<Person> getPersons() {
+    //     return this.person;
+    // }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -39,5 +46,9 @@ public class Job implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    // public void setPersons(List<Person> person) {
+    //     this.person = person;
+    // }
 
 }
